@@ -1,0 +1,15 @@
+import React, { useEffect } from 'react'
+import MediaPlayer from '../../components/MediaPlayer'
+
+const Participant = (props) => {
+    return (
+        <div className="border h-100">
+            <MediaPlayer
+                videoTrack={props.videoTrack}
+                audioTrack={props.audioTrack}
+            />
+        </div>
+    )
+}
+
+export default Participant
