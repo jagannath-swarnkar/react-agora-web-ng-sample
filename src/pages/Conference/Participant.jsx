@@ -7,6 +7,7 @@ const Participant = (props) => {
             <MediaPlayer
                 videoTrack={props.videoTrack}
                 audioTrack={props.audioTrack}
+                avatarSize="100px"
             />
         </div>
     )
