@@ -7,10 +7,12 @@ import { IconButton } from '@material-ui/core';
 import CallIcon from '@material-ui/icons/Call';
 import MicIcon from '@material-ui/icons/Mic';
 import MicOffIcon from '@material-ui/icons/MicOff';
+const queryString = require('query-string');
 
 const Host = (props) => {
-    console.log('props', props)
-    const {client} = props
+    const query = queryString.parse(window?.location?.search)
+    const {client} = props;
+    const token = query?.token || TOKEN;
     const {
         localAudioTrack, 
         localVideoTrack,
@@ -25,7 +27,7 @@ const Host = (props) => {
 
 
     const handleClickHost = async() => {
-        join(APP_ID, "Fanzly", TOKEN).then(res=>{
+        join(APP_ID, "Fanzly", token).then(res=>{
             console.log(res)
         })
 
