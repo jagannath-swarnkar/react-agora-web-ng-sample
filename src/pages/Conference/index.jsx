@@ -47,7 +47,7 @@ const Conference = (props) => {
         })
         const options = {...localMedia}
         join(APP_ID, "Fanzly", token, null, options).then(res=>{
-            console.log(res);
+            // console.log(res);
         })
     },[])
 
@@ -90,7 +90,7 @@ const Conference = (props) => {
                 
                 <div className="d-flex flex-wrap remote-player-wrapper">
                     {remoteUsers.map((user, index) => {
-                            console.log('user', user)
+                            // console.log('user', user)
                             return (
                                 <div id={`participant_grid_${index+1}`} className="participant participant_grid border" key={user.uid}>
                                     <Participant 
@@ -101,7 +101,7 @@ const Conference = (props) => {
                             )
                         })
                     }
-                    
+
                     {!remoteUsers?.length ? (
                         <div className="empty_room d-flex align-items-center text-muted">
                             <h2 className="empty_room_text">
