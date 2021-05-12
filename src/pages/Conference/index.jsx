@@ -32,7 +32,7 @@ const Conference = (props) => {
         joinLocalVideoTrack,
         joinLocalAudioTrack
     } = useAgora(client)
-    const [localMedia, setLocalMedia] = useState({audio: false, video: false});
+    const [localMedia, setLocalMedia] = useState({audio: false, video: true});
     const [gridSize, setGridSize] = useState()
 
     React.useEffect(()=>{
@@ -81,6 +81,12 @@ const Conference = (props) => {
             removeLocalVideoTracks();
             setLocalMedia(prev=>({...prev, video: false}));
         }
+    }
+
+    const handleDispose = () => {
+        leave();
+        props?.setActiveWindow?.('chat');
+        setLocalMedia({video: false, audio: false})
     }
 
 
@@ -135,7 +141,7 @@ const Conference = (props) => {
                             <VideocamOffIcon style={{color: '#fff'}}/>
                         )}
                     </IconButton>
-                    <IconButton onClick={leave} className="p-2 m-2" style={{background: 'red'}}>
+                    <IconButton onClick={handleDispose} className="p-2 m-2" style={{background: 'red'}}>
                         <CallEndIcon style={{color: '#fff'}}/>
                     </IconButton>
                 </div>

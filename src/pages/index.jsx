@@ -1,8 +1,11 @@
-import React from 'react'
+import { IconButton } from '@material-ui/core'
+import React, { useState } from 'react'
 import Conference from './Conference'
+import VideocamIcon from '@material-ui/icons/Videocam';
 
 const Home = () => {
-    // console.log('Conference',Conference)
+    const [activeWindow, setActiveWindow] = useState("chat");
+
     return (
         <>
         <div id="Home">
@@ -17,8 +20,18 @@ const Home = () => {
                     <div id="chat_window">
                         <div className="chat_header font-weight-bold text-center d-flex align-items-center justify-content-center">
                             Chat Header
+                            <IconButton onClick={()=>setActiveWindow('call')} className="videocall_icon">
+                                <VideocamIcon style={{color: "#fff"}} />
+                            </IconButton>
                         </div>
-                        <Conference ></Conference>
+                        {activeWindow === 'call' ? (
+                            <Conference setActiveWindow={setActiveWindow} ></Conference>
+
+                        ) : (
+                            <div className="text_chat_wrapper">
+                                text chat window
+                            </div>
+                        )}
                         <div className="chat_input_container">
 
                         </div>
@@ -36,7 +49,7 @@ const Home = () => {
             }
             #chat_window{
                 width: -webkit-fill-available;
-                min-width: 800px;
+                // min-width: 800px;
             }
             .chat_cont{
                 height: 100vh;
@@ -53,6 +66,22 @@ const Home = () => {
             .chat_input_container{
                 height: 40px;
                 background: whitesmoke;
+            }
+            .videocall_icon{
+                position: absolute;
+                right: 10px;
+                background: #4aab4d !important;
+            }
+            .text_chat_wrapper{
+                height: calc(100vh - (70px + 40px + 60px));
+                width: 100%;
+                justify-content: center;
+                overflow: auto;
+            }
+            @media only screen and (max-width: 700px){
+                #user_list{
+                    display: none;
+                }
             }
         `}</style>
         </>

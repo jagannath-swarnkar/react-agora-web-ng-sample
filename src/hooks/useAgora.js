@@ -130,7 +130,7 @@ const useAgora = (client) => {
      * @param options?:Object- other options)
      */
     const join = async(appid, channel, token=null, uid=null, options)=>{
-      // console.log('options', options)
+      console.log('options', options)
         if(!client) return;
         try {
             const tracks = [];
@@ -149,6 +149,7 @@ const useAgora = (client) => {
               tracks.push(cameraTrack)
             }
             if(tracks?.length){
+              console.log('tracks', tracks)
               await client.publish(tracks);
             }
             
